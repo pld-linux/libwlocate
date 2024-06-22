@@ -1,0 +1,31 @@
+--- libwlocate-code-965e1fcd6950a458fcb06f71b9fe484af23e2268/master/Makefile.orig	2020-05-05 16:41:16.000000000 +0200
++++ libwlocate-code-965e1fcd6950a458fcb06f71b9fe484af23e2268/master/Makefile	2024-06-22 19:03:21.709549452 +0200
+@@ -52,6 +52,11 @@ LIBWLOCATE_EXECUTABLE = libwlocate.so
+ WINLIBWLOCATE_EXECUTABLE = libwlocate.dll
+ LIBWLOCATE_HEADER = libwlocate.h
+ 
++PREFIX=/usr
++BINDIR=$(PREFIX)/bin
++INCLUDEDIR=$(PREFIX)/include
++LIBDIR=$(PREFIX)/lib
++
+ all: libwlocate lwtrace
+ 
+ libwlocate:
+@@ -138,13 +143,13 @@ clean:
+ install:
+ ifndef CHECK_LWTRACE
+ 	@echo "Install $(LWTRACE_EXECUTABLE) ..."
+-	install -m 0755 $(LWTRACE_EXECUTABLE) /usr/bin/$(LWTRACE_EXECUTABLE)
++	install -m 0755 $(LWTRACE_EXECUTABLE) $(DESTDIR)$(BINDIR)/$(LWTRACE_EXECUTABLE)
+ endif
+ ifdef CHECK_LIBWLOCATE
+ 	@echo "Install $(LIBWLOCATE_EXECUTABLE) ..."
+-	install -m 0755 $(LIBWLOCATE_EXECUTABLE) /usr/lib/$(LIBWLOCATE_EXECUTABLE)
++	install -m 0755 $(LIBWLOCATE_EXECUTABLE) $(DESTDIR)$(LIBDIR)/$(LIBWLOCATE_EXECUTABLE)
+ 	@echo "Install $(LIBWLOCATE_HEADER) ..."
+-	install -m 0755 $(LIBWLOCATE_HEADER) /usr/include/$(LIBWLOCATE_HEADER)
++	install -m 0755 $(LIBWLOCATE_HEADER) $(DESTDIR)$(INCLUDEDIR)/$(LIBWLOCATE_HEADER)
+ endif
+ 
+ uninstall:
