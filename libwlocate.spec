@@ -36,7 +36,7 @@ Pliki nagłówkowe biblioteki libwlocate.
 
 %prep
 %setup -q -n libwlocate-code-965e1fcd6950a458fcb06f71b9fe484af23e2268
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 cd master
